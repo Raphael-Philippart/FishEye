@@ -1,0 +1,21 @@
+@import "./../../../../scss/mixins";
+
+.PhotographerContainer {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include sm {
+    width: 48%;
+  }
+  @include md {
+    width: 48%;
+  }
+  @include lg {
+    width: 31%;
+  }
+}

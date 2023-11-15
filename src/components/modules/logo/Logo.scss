@@ -1,0 +1,15 @@
+@import './../../../scss/mixins';
+
+.Logo {
+  width: 100px;
+  display: flex;
+
+  @include md {
+    width: 200px;
+  }
+
+  & > img {
+    width: 100%;
+    height: auto;
+  }
+}

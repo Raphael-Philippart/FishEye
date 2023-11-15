@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './ui/components/layout/Layout';
+import Layout from './components/ui/layout/Layout';
 import Home from './view/Home/Home';
 import Photographer from './view/Photographer/Photographer';
 import './index.scss';

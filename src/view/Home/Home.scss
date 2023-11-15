@@ -1,3 +1,44 @@
-.App {
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
 
+.Home {
+  padding: 20px 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include sm {
+    padding: 15px 25px 0;
+  }
+  @include md {
+    padding: 25px 50px 0;
+  }
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 14.87px;
+    font-family: 'DMSans', serif;
+    color: $color-primary;
+    margin-bottom: 20px;
+
+    @include sm {
+      font-size: 26px;
+      line-height: 26.87px;
+      margin-bottom: 50px;
+    }
+    @include md {
+      font-size: 36px;
+      line-height: 46.87px;
+      margin-bottom: 100px;
+    }
+  }
+
+  &Photographers {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 }

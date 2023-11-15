@@ -1,0 +1,70 @@
+@import "./../../../../scss/variables";
+@import "./../../../../scss/mixins";
+
+.PhotographerCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &Header {
+    > div {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      > a > img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &Section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: $color-primary;
+
+    > div:first-child {
+      font-size: 16px;
+      line-height: 16.87px;
+
+      @include sm {
+        font-size: 18px;
+        line-height: 26.87px;
+      }
+      @include md {
+        font-size: 26px;
+        line-height: 46.87px;
+      }
+    }
+
+    > div:nth-child(2) {
+      font-size: 13px;
+      line-height: 16.93px;
+    }
+
+    > div:nth-child(3) {
+      font-size: 10px;
+      line-height: 13.02px;
+      color: black;
+    }
+
+    > div:last-child {
+      color: $color-price;
+      font-size: 15px;
+      line-height: 16.87px;
+      font-weight: 400;
+
+      @include md {
+        font-size: 13px;
+        line-height: 16.93px;
+      }
+    }
+  }
+}
