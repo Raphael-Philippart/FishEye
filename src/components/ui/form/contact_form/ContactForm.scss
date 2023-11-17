@@ -36,11 +36,9 @@
 
   &Modal {
     position: absolute;
-    top: 15%;
-    bottom: 15%;
+    top: 10%;
     left: 1%;
     right: 1%;
-    height: auto;
     padding: 25px;
     border-radius: 5px;
     box-shadow: 2px 2px 29px -3px rgba(0, 0, 0, 0.6);
@@ -75,15 +73,15 @@
           line-height: 43.22px;
         }
         @include md {
-          font-size: 34px;
-          line-height: 63.22px;
+          font-size: 26px;
+          line-height: 43.22px;
         }
         @include lg {
-          font-size: 44px;
-          line-height: 63.22px;
+          font-size: 34px;
+          line-height: 43.22px;
         }
         @include xl {
-          font-size: 64px;
+          font-size: 54px;
           line-height: 83.22px;
         }
       }
@@ -122,15 +120,15 @@
           line-height: 43.22px;
         }
         @include md {
-          font-size: 34px;
-          line-height: 63.22px;
+          font-size: 26px;
+          line-height: 43.22px;
         }
         @include lg {
-          font-size: 44px;
-          line-height: 63.22px;
+          font-size: 34px;
+          line-height: 43.22px;
         }
         @include xl {
-          font-size: 64px;
+          font-size: 54px;
           line-height: 83.22px;
         }
       }

@@ -15,22 +15,79 @@
     padding: 25px 50px 0;
   }
 
-  &Content {
-    &Header {
+  & > section {
+    & > header {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       background: $color-secondary;
       padding: 20px 50px;
 
-      @include md {
+      @include lg {
         flex-direction: row;
+        justify-content: space-between;
       }
-    }
 
-    &Portrait {
-      > img {
+      & > div > div:first-child {
+        font-size: 26px;
+        line-height: 23.33px;
+        color: $color-primary;
+        font-family: 'DMSans', serif;
+        text-align: center;
+
+        @include sm {
+          font-size: 28px;
+          line-height: 33.33px;
+        }
+        @include md {
+          font-size: 24px;
+          line-height: 43.33px;
+        }
+        @include md {
+          font-size: 64px;
+          line-height: 83.33px;
+        }
+      }
+
+      & > div > div:nth-child(2) {
+        font-size: 18px;
+        line-height: 21.25px;
+        color: $color-primary;
+        font-family: 'DMSans', serif;
+        text-align: center;
+
+        @include md {
+          font-size: 20px;
+          line-height: 21.25px;
+          text-align: left;
+        }
+        @include md {
+          font-size: 24px;
+          line-height: 31.25px;
+          text-align: left;
+        }
+      }
+
+      & > div > div:nth-child(3) {
+        font-size: 16px;
+        line-height: 20.44px;
+        font-family: 'DMSans', serif;
+        text-align: center;
+
+        @include md {
+          font-size: 18px;
+          line-height: 22.44px;
+          text-align: left;
+        }
+        @include md {
+          font-size: 20px;
+          line-height: 23.44px;
+          text-align: left;
+        }
+      }
+
+      & > div:last-child > img {
         width: 150px;
         height: 150px;
         object-fit: cover;

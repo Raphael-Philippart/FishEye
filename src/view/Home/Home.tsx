@@ -4,6 +4,7 @@ import Logo from '../../components/modules/logo/Logo';
 import Api from '../../utils/api/Api';
 import PhotographerContainer from '../../components/modules/home/photographer_container/PhotographerContainer';
 import PhotographerCard from '../../components/modules/home/photographer_card/PhotographerCard';
+import Link from '../../components/ui/link/Link';
 import './Home.scss';
 
 const Home = () => {
@@ -21,14 +22,16 @@ const Home = () => {
   return (
     <div className='Home'>
       <header className='HomeHeader'>
-        <Logo />
+        <Link href='/'>
+          <Logo />
+        </Link>
         <div>Nos photographes</div>
       </header>
       <section className='HomePhotographers'>
         {photographers && photographers!.photographers!.map((photographer: IPhotographer, index: number) => {
           return (
-            <PhotographerContainer key={`photographer-${index}`}>
-              <PhotographerCard photographer={photographer} />
+            <PhotographerContainer key={`photographer-${photographer.id}-${index}`}>
+              <PhotographerCard photographer={photographer} tabIndex={(index + 1) +1} />
             </PhotographerContainer>
           );
         })}

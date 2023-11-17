@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './img/logo.png';
-import './Logo.scss';
 import Image from '../../ui/image/Image';
+import './Logo.scss';
 
 const Logo = () => {
   return (
