@@ -23,3 +23,7 @@ export interface IDataPhotographers {
   photographers?: IPhotographer[];
   media?: IMedia[];
 }
+
+export type TParams = {
+  id: string | undefined;
+};

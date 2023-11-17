@@ -1,0 +1,182 @@
+@import "./../../../../scss/variables";
+@import "./../../../../scss/mixins";
+
+.ContactForm {
+
+  &Button {
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 14.04px;
+    font-family: 'DMSans', serif;
+    border: 0;
+    color: #FFF;
+    background: $color-primary;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include sm {
+      padding: 10px 5px;
+      font-size: 14px;
+      line-height: 14.04px;
+    }
+    @include md {
+      padding: 12px 7px;
+      font-size: 16px;
+      line-height: 16.04px;
+    }
+    @include lg {
+      padding: 15px 10px;
+      font-size: 20px;
+      line-height: 26.04px;
+    }
+  }
+
+  &Modal {
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 1%;
+    right: 1%;
+    height: auto;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 29px -3px rgba(0, 0, 0, 0.6);
+    background: $color-tertiary;
+    z-index: 99;
+
+    @include sm {
+      left: 5%;
+      right: 5%;
+    }
+    @include md {
+      left: 25%;
+      right: 25%;
+    }
+    @include lg {
+      left: 30%;
+      right: 30%;
+    }
+
+    & > header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > div:first-child {
+        font-size: 24px;
+        line-height: 43.22px;
+        font-family: 'DMSans', serif;
+
+        @include sm {
+          font-size: 24px;
+          line-height: 43.22px;
+        }
+        @include md {
+          font-size: 34px;
+          line-height: 63.22px;
+        }
+        @include lg {
+          font-size: 44px;
+          line-height: 63.22px;
+        }
+        @include xl {
+          font-size: 64px;
+          line-height: 83.22px;
+        }
+      }
+
+      & > div > svg {
+        width: 32px;
+        height: 32px;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        @include sm {
+          width: 42px;
+          height: 42px;
+        }
+        @include md {
+          width: 62px;
+          height: 62px;
+        }
+        @include lg {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+
+    &Content {
+      & > div:first-child {
+        font-size: 24px;
+        line-height: 43.22px;
+        font-family: 'DMSans', serif;
+
+        @include sm {
+          font-size: 24px;
+          line-height: 43.22px;
+        }
+        @include md {
+          font-size: 34px;
+          line-height: 63.22px;
+        }
+        @include lg {
+          font-size: 44px;
+          line-height: 63.22px;
+        }
+        @include xl {
+          font-size: 64px;
+          line-height: 83.22px;
+        }
+      }
+
+      & > div:last-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      & > div > form {
+        margin-top: 20px;
+        width: 100%;
+
+        & > label {
+          font-size: 30px;
+          line-height: 40.87px;
+          font-family: 'DMSans', serif;
+        }
+
+        & > input {
+          width: 100%;
+          height: 35px;
+        }
+
+        & > textarea {
+          width: 100%;
+          height: 170px;
+        }
+
+        & > input[type='submit'] {
+          width: auto;
+          height: auto;
+          margin-top: 20px;
+          padding: 15px 25px;
+          color: #FFF;
+          border: 0;
+          border-radius: 5px;
+          background: $color-primary;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

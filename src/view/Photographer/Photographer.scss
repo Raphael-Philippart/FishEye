@@ -1,3 +1,55 @@
-.App {
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
 
+.Photographer {
+  // identical for the layout to Home.scss
+  padding: 20px 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include sm {
+    padding: 15px 25px 0;
+  }
+  @include md {
+    padding: 25px 50px 0;
+  }
+
+  &Content {
+    &Header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background: $color-secondary;
+      padding: 20px 50px;
+
+      @include md {
+        flex-direction: row;
+      }
+    }
+
+    &Portrait {
+      > img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        overflow: hidden;
+
+        @include sm {
+          width: 150px;
+          height: 150px;
+        }
+        @include md {
+          width: 200px;
+          height: 200px;
+        }
+        @include lg {
+          width: 250px;
+          height: 250px;
+        }
+      }
+    }
+  }
 }

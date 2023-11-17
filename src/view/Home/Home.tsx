@@ -3,8 +3,8 @@ import { IDataPhotographers, IPhotographer } from '../../utils/types/Types';
 import Logo from '../../components/modules/logo/Logo';
 import Api from '../../utils/api/Api';
 import PhotographerContainer from '../../components/modules/home/photographer_container/PhotographerContainer';
-import './Home.scss';
 import PhotographerCard from '../../components/modules/home/photographer_card/PhotographerCard';
+import './Home.scss';
 
 const Home = () => {
   const [photographers, setPhotographers] = useState<IDataPhotographers>({ photographers: [], media: [] });
