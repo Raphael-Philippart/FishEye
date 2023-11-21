@@ -70,7 +70,7 @@
       line-height: 18px;
       color: $color-primary;
 
-      @include fontPhotographer(16, 18, 3);
+      @include fontPhotographer(16, 18, 1.2);
 
       &Likes {
         display: flex;

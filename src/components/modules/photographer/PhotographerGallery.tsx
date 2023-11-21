@@ -1,51 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IMedia } from '../../../utils/types/Types';
+import { useLightBoxContext } from '../../../context/LightBoxContext';
 import Image from '../../ui/image/Image';
 import Video from '../../ui/video/Video';
-import SortDropdown from '../sort_dropdown/SortDropdown';
 import Heart from '../../ui/svg/heart/Heart';
 import Lightbox from '../lightbox/Lightbox';
+import SortDropdown from '../sort_dropdown/SortDropdown';
 import './PhotographerGallery.scss';
+import EventLikes from '../event_likes/EventLikes';
 
 const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
-  const [stateLightBox, setStateLightBox] = useState(false);
+  const { statusLightBox, updateStatusLightBox } = useLightBoxContext();
+  const [clickLikes, setClickLikes] = useState(false);
   const startTabIndex: number = 7;
 
   const handleLightBox = () => {
-    setStateLightBox(prevState => !prevState);
+    updateStatusLightBox(!statusLightBox);
   };
 
   const handleLikes = () => {
-    console.log('Likes');
+    setClickLikes(prevState => !prevState);
   };
 
   return (
     <div className='PhotographerGallery'>
       <div>Trier par <SortDropdown /></div>
       <div>
-        {media && !stateLightBox && media.map((item: IMedia, index: number) => {
+        {media && !statusLightBox && media.map((item: IMedia, index: number) => {
           return (
-            <>
-              <div key={`media-${item.id}`}>
-                <button className='PhotographerGalleryMedia' onClick={handleLightBox} tabIndex={startTabIndex + index}>
-                  {item.image && <Image src={`/assets/images/${item.photographerId}/${item.image}`} alt={item.title} />}
-                  {item.video && <Video src={`/assets/images/${item.photographerId}/${item.video}`}
-                                        tabIndex={startTabIndex + index} />}
-                </button>
-                <div className='PhotographerGalleryMediaInfo'>
-                  <div>{item.title}</div>
-                  <div>
-                    <div>{item.likes}</div>
-                    <div className='PhotographerGalleryMediaInfoLikes' onClick={handleLikes}>
-                      <Heart />
-                    </div>
+            <div key={`media-${item.id}`}>
+              <button className='PhotographerGalleryMedia' onClick={handleLightBox} tabIndex={startTabIndex + index}>
+                {item.image && <Image src={`/assets/images/${item.photographerId}/${item.image}`} alt={item.title} />}
+                {item.video && <Video src={`/assets/images/${item.photographerId}/${item.video}`}
+                                      tabIndex={startTabIndex + index} />}
+              </button>
+              <div className='PhotographerGalleryMediaInfo'>
+                <div>{item.title}</div>
+                <EventLikes imageLikes={item.likes}>
+                  <div className='PhotographerGalleryMediaInfoLikes'>
+                    <Heart />
                   </div>
-                </div>
+                </EventLikes>
               </div>
-            </>
+            </div>
           );
         })}
-        {media && stateLightBox && <Lightbox closeLightBox={handleLightBox} />}
+        {media && statusLightBox && <Lightbox media={media} />}
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { TParams, IPhotographer, IDataPhotographers, IMedia } from '../../utils/types/Types';
 import { useParams } from 'react-router-dom';
+import { LightBoxProvider } from '../../context/LightBoxContext';
 import Logo from '../../components/modules/logo/Logo';
 import Link from '../../components/ui/link/Link';
 import Api from '../../utils/api/Api';
 import Image from '../../components/ui/image/Image';
 import ContactForm from '../../components/ui/form/contact_form/ContactForm';
 import PhotographerGallery from '../../components/modules/photographer/PhotographerGallery';
-import Likes from '../../components/modules/likes/Likes';
+import LikesPrice from '../../components/modules/likes_price/LikesPrice';
 import './Photographer.scss';
 
 const Photographer = () => {
@@ -44,53 +45,55 @@ const Photographer = () => {
   useEffect(() => {
     const photographerById: IPhotographer | undefined = photographers!.photographers!.find((p: IPhotographer) => p.id === parseInt(id!));
     const mediaPhotographerById: IMedia[] | undefined = photographers!.media!.filter((p: IMedia) => p.photographerId === parseInt(id!));
-    const totalLikes = mediaPhotographerById.reduce((sum: number, media: IMedia) => sum + media.likes, 0);
+    //const totalLikes = mediaPhotographerById.reduce((sum: number, media: IMedia) => sum + media.likes, 0);
     setPhotographer(photographerById!);
     setMedia(mediaPhotographerById!);
-    setLikes(totalLikes);
+    //setLikes(totalLikes);
   }, [photographers]);
 
   return (
-    <main className='Photographer'>
-      <header>
-        <div>
-          <Link href={`/`}>
-            <Logo />
-          </Link>
-        </div>
-      </header>
-      {!photographer && <div>
-        Désole non ne trouvons pas de photographe avec cette ID ...
-        <br />
-        <a href='/'>Retour à Accueil</a>
-      </div>}
-      {photographer &&
-        <>
-          <section>
-            <header className='PhotographerHeader'>
-              <div>
-                <div className='PhotographerHeaderName'>{photographer.name}</div>
-                <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
-                <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
-              </div>
-              <div className='PhotographerHeaderContact'>
-                <ContactForm photographer={photographer} />
-              </div>
-              <div className='PhotographerAvatar'>
+    <LightBoxProvider>
+      <main className='Photographer'>
+        <header>
+          <div>
+            <Link href={`/`}>
+              <Logo />
+            </Link>
+          </div>
+        </header>
+        {!photographer && <div>
+          Désole non ne trouvons pas de photographe avec cette ID ...
+          <br />
+          <a href='/'>Retour à Accueil</a>
+        </div>}
+        {photographer &&
+          <>
+            <section>
+              <header className='PhotographerHeader'>
                 <div>
-                  <Image src={`/assets/images/Portraits/${photographer.portrait}`}
-                         alt={photographer.tagline} />
+                  <div className='PhotographerHeaderName'>{photographer.name}</div>
+                  <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
+                  <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
                 </div>
+                <div className='PhotographerHeaderContact'>
+                  <ContactForm photographer={photographer} />
+                </div>
+                <div className='PhotographerAvatar'>
+                  <div>
+                    <Image src={`/assets/images/Portraits/${photographer.portrait}`}
+                           alt={photographer.tagline} />
+                  </div>
+                </div>
+              </header>
+              <div>
+                <PhotographerGallery media={media} />
               </div>
-            </header>
-            <div>
-              <PhotographerGallery media={media} />
-            </div>
-          </section>
-          <Likes likes={likes} price={photographer.price} />
-        </>
-      }
-    </main>
+            </section>
+            <LikesPrice media={media} price={photographer.price} />
+          </>
+        }
+      </main>
+    </LightBoxProvider>
   );
 };
 
