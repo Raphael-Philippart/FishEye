@@ -46,6 +46,15 @@
       display: flex;
       column-gap: 20px;
 
+      & > button {
+        border: 0;
+        background: transparent;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
       & > div:first-child {
         display: flex;
         flex-direction: column;
