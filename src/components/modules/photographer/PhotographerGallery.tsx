@@ -1,46 +1,51 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IMedia } from '../../../utils/types/Types';
 import Image from '../../ui/image/Image';
-import './PhotographerGallery.scss';
 import Video from '../../ui/video/Video';
+import SortDropdown from '../sort_dropdown/SortDropdown';
+import Heart from '../../ui/svg/heart/Heart';
+import Lightbox from '../lightbox/Lightbox';
+import './PhotographerGallery.scss';
 
 const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
+  const [stateLightBox, setStateLightBox] = useState(false);
+  const startTabIndex: number = 7;
 
-  useEffect(() => {
-    console.log(media);
-  }, []);
+  const handleLightBox = () => {
+    setStateLightBox(prevState => !prevState);
+  };
+
+  const handleLikes = () => {
+    console.log('Likes');
+  };
 
   return (
     <div className='PhotographerGallery'>
-      <div>Trier par</div>
+      <div>Trier par <SortDropdown /></div>
       <div>
-        {media && media.map((item: IMedia, index: number) => {
+        {media && !stateLightBox && media.map((item: IMedia, index: number) => {
           return (
-            <div key={`media-${item.id}`}>
-              <div className='PhotographerGalleryMedia' tabIndex={3 + index}>
-                {item.image &&
-                  <Image src={`/assets/images/${item.photographerId}/${item.image}`}
-                         alt={item.title}
-                  />
-                }
-                {item.video &&
-                  <Video src={`/assets/images/${item.photographerId}/${item.video}`} tabIndex={3 + index} />
-                }
-              </div>
-              <div className='PhotographerGalleryMediaInfo'>
-                <div>{item.title}</div>
-                <div>
-                  <div>{item.likes}</div>
-                  <div className='PhotographerGalleryMediaInfoLikes'>
-                    <svg fill="currentColor" width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0.256 12.16q0.544 2.080 2.080 3.616l13.664 14.144 13.664-14.144q1.536-1.536 2.080-3.616t0-4.128-2.080-3.584-3.584-2.080-4.16 0-3.584 2.080l-2.336 2.816-2.336-2.816q-1.536-1.536-3.584-2.080t-4.128 0-3.616 2.080-2.080 3.584 0 4.128z"></path>
-                    </svg>
+            <>
+              <div key={`media-${item.id}`}>
+                <button className='PhotographerGalleryMedia' onClick={handleLightBox} tabIndex={startTabIndex + index}>
+                  {item.image && <Image src={`/assets/images/${item.photographerId}/${item.image}`} alt={item.title} />}
+                  {item.video && <Video src={`/assets/images/${item.photographerId}/${item.video}`}
+                                        tabIndex={startTabIndex + index} />}
+                </button>
+                <div className='PhotographerGalleryMediaInfo'>
+                  <div>{item.title}</div>
+                  <div>
+                    <div>{item.likes}</div>
+                    <div className='PhotographerGalleryMediaInfoLikes' onClick={handleLikes}>
+                      <Heart />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </>
           );
         })}
+        {media && stateLightBox && <Lightbox closeLightBox={handleLightBox} />}
       </div>
     </div>
   );

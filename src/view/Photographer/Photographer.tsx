@@ -7,6 +7,7 @@ import Api from '../../utils/api/Api';
 import Image from '../../components/ui/image/Image';
 import ContactForm from '../../components/ui/form/contact_form/ContactForm';
 import PhotographerGallery from '../../components/modules/photographer/PhotographerGallery';
+import Likes from '../../components/modules/likes/Likes';
 import './Photographer.scss';
 
 const Photographer = () => {
@@ -30,6 +31,7 @@ const Photographer = () => {
     date: '',
     price: 0,
   }]);
+  const [likes, setLikes] = useState<number>(0);
 
   useEffect(() => {
     const getPhotographers = async (): Promise<void> => {
@@ -42,8 +44,10 @@ const Photographer = () => {
   useEffect(() => {
     const photographerById: IPhotographer | undefined = photographers!.photographers!.find((p: IPhotographer) => p.id === parseInt(id!));
     const mediaPhotographerById: IMedia[] | undefined = photographers!.media!.filter((p: IMedia) => p.photographerId === parseInt(id!));
+    const totalLikes = mediaPhotographerById.reduce((sum: number, media: IMedia) => sum + media.likes, 0);
     setPhotographer(photographerById!);
     setMedia(mediaPhotographerById!);
+    setLikes(totalLikes);
   }, [photographers]);
 
   return (
@@ -61,27 +65,30 @@ const Photographer = () => {
         <a href='/'>Retour à Accueil</a>
       </div>}
       {photographer &&
-        <section>
-          <header className='PhotographerHeader'>
-            <div>
-              <div className='PhotographerHeaderName'>{photographer.name}</div>
-              <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
-              <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
-            </div>
-            <div className='PhotographerHeaderContact'>
-              <ContactForm photographer={photographer} />
-            </div>
-            <div className='PhotographerAvatar'>
+        <>
+          <section>
+            <header className='PhotographerHeader'>
               <div>
-                <Image src={`/assets/images/Portraits/${photographer.portrait}`}
-                       alt={photographer.tagline} />
+                <div className='PhotographerHeaderName'>{photographer.name}</div>
+                <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
+                <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
               </div>
+              <div className='PhotographerHeaderContact'>
+                <ContactForm photographer={photographer} />
+              </div>
+              <div className='PhotographerAvatar'>
+                <div>
+                  <Image src={`/assets/images/Portraits/${photographer.portrait}`}
+                         alt={photographer.tagline} />
+                </div>
+              </div>
+            </header>
+            <div>
+              <PhotographerGallery media={media} />
             </div>
-          </header>
-          <div>
-            <PhotographerGallery media={media} />
-          </div>
-        </section>
+          </section>
+          <Likes likes={likes} price={photographer.price} />
+        </>
       }
     </main>
   );

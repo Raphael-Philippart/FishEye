@@ -4,9 +4,15 @@
 .PhotographerGallery {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 15px;
 
   & > div:first-child {
     width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 15px;
+    margin-bottom: 15px;
   }
 
   & > div:nth-child(2) {
@@ -15,21 +21,25 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    column-gap: 1%;
 
     & > div {
       width: 100%;
-      padding: 15px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      margin-bottom: 15px;
 
-      @include allBreakPoint(width, 100%, 50%, 32%, 33%);
+      @include allBreakPoint(margin-bottom, 15px, 20px, 25px, 30px);
+      @include allBreakPoint(width, 100%, 49%, 32%, 32%);
     }
   }
 
   &Media {
     width: 100%;
     height: 120px;
+    border: 0;
+    background: transparent;
 
     @include allBreakPoint(height, 120px, 150px, 250px, 350px);
 
@@ -67,6 +77,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-family: 'DMSans', serif;
+        font-weight: 500;
 
         & > svg {
           width: 15px;
