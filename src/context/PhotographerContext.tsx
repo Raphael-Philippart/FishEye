@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 
-interface LightBoxContextProps {
+interface PhotographerProps {
   statusLightBox: boolean;
   updateStatusLightBox: (newStatus: boolean) => void;
   likes: number;
@@ -11,9 +11,9 @@ interface LightBoxProviderProps {
   children: ReactNode;
 }
 
-const LightBoxContext = createContext<LightBoxContextProps | undefined>(undefined);
+const PhotographerContext = createContext<PhotographerProps | undefined>(undefined);
 
-export const LightBoxProvider: React.FC<LightBoxProviderProps> = ({ children }: { children: ReactNode }) => {
+export const PhotographerProvider: React.FC<LightBoxProviderProps> = ({ children }: { children: ReactNode }) => {
   const [statusLightBox, setStatus] = useState<boolean>(false);
   const [likes, setLikes] = useState<number>(0);
 
@@ -26,14 +26,14 @@ export const LightBoxProvider: React.FC<LightBoxProviderProps> = ({ children }: 
   };
 
   return (
-    <LightBoxContext.Provider value={{ statusLightBox, updateStatusLightBox, likes, updateLikes }}>
+    <PhotographerContext.Provider value={{ statusLightBox, updateStatusLightBox, likes, updateLikes }}>
       {children}
-    </LightBoxContext.Provider>
+    </PhotographerContext.Provider>
   );
 };
 
-export const useLightBoxContext = (): LightBoxContextProps => {
-  const context = useContext(LightBoxContext);
+export const usePhotographerContext = (): PhotographerProps => {
+  const context = useContext(PhotographerContext);
   if (!context) {
     throw new Error('useMyContext doit être utilisé à l\'intérieur de MyProvider');
   }

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useLightBoxContext } from '../../../context/LightBoxContext';
 import { IMedia } from '../../../utils/types/Types';
+import { usePhotographerContext } from '../../../context/PhotographerContext';
 import './Lightbox.scss';
 
 const Lightbox = ({ media }: { media: IMedia[] }) => {
-  const { statusLightBox, updateStatusLightBox } = useLightBoxContext();
+  const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
 
   const handleLightBox = () => {
     updateStatusLightBox(!statusLightBox);

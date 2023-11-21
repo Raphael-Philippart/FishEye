@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TParams, IPhotographer, IDataPhotographers, IMedia } from '../../utils/types/Types';
 import { useParams } from 'react-router-dom';
-import { LightBoxProvider } from '../../context/LightBoxContext';
+import { PhotographerProvider } from '../../context/PhotographerContext';
 import Logo from '../../components/modules/logo/Logo';
 import Link from '../../components/ui/link/Link';
 import Api from '../../utils/api/Api';
@@ -52,7 +52,7 @@ const Photographer = () => {
   }, [photographers]);
 
   return (
-    <LightBoxProvider>
+    <PhotographerProvider>
       <main className='Photographer'>
         <header>
           <div>
@@ -93,7 +93,7 @@ const Photographer = () => {
           </>
         }
       </main>
-    </LightBoxProvider>
+    </PhotographerProvider>
   );
 };
 

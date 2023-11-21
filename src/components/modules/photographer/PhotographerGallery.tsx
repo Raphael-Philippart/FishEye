@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { IMedia } from '../../../utils/types/Types';
-import { useLightBoxContext } from '../../../context/LightBoxContext';
+import { usePhotographerContext } from '../../../context/PhotographerContext';
 import Image from '../../ui/image/Image';
 import Video from '../../ui/video/Video';
 import Heart from '../../ui/svg/heart/Heart';
 import Lightbox from '../lightbox/Lightbox';
 import SortDropdown from '../sort_dropdown/SortDropdown';
-import './PhotographerGallery.scss';
 import EventLikes from '../event_likes/EventLikes';
+import './PhotographerGallery.scss';
 
 const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
-  const { statusLightBox, updateStatusLightBox } = useLightBoxContext();
+  const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const [clickLikes, setClickLikes] = useState(false);
   const startTabIndex: number = 7;
 

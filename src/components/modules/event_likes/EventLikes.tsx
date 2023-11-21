@@ -1,12 +1,12 @@
 import { ReactNode, useState } from 'react';
-import { useLightBoxContext } from '../../../context/LightBoxContext';
+import { usePhotographerContext } from '../../../context/PhotographerContext';
 
 const EventLikes = ({ imageLikes, children }: {
   imageLikes: number,
   children: ReactNode
 }) => {
   const [statusUserLike, setStatusUserLike] = useState(false);
-  const { likes, updateLikes } = useLightBoxContext();
+  const { likes, updateLikes } = usePhotographerContext();
 
   const handleLikes = () => {
     if (!statusUserLike) {

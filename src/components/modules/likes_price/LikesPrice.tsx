@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { IMedia } from '../../../utils/types/Types';
-import { useLightBoxContext } from '../../../context/LightBoxContext';
+import { usePhotographerContext } from '../../../context/PhotographerContext';
 import Heart from '../../ui/svg/heart/Heart';
 import './LikesPrice.scss';
 
 const LikesPrice = ({ media, price }: { media: IMedia[], price: number }) => {
-  const { statusLightBox, updateStatusLightBox } = useLightBoxContext();
-  const { likes, updateLikes } = useLightBoxContext();
+  const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
+  const { likes, updateLikes } = usePhotographerContext();
 
   useEffect(() => {
     const totalLikes = media.reduce((sum: number, media: IMedia) => sum + media.likes, 0);
