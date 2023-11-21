@@ -13,24 +13,14 @@
       height: 100%;
 
       > a > img {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
         object-fit: cover;
         border-radius: 50%;
         overflow: hidden;
 
-        @include sm {
-          width: 150px;
-          height: 150px;
-        }
-        @include md {
-          width: 200px;
-          height: 200px;
-        }
-        @include lg {
-          width: 250px;
-          height: 250px;
-        }
+        @include allBreakPoint(width, 200px, 250px, 300px, 300px);
+        @include allBreakPoint(height, 200px, 250px, 300px, 300px);
       }
     }
   }
@@ -44,33 +34,26 @@
     color: $color-primary;
 
     > div:first-child {
-      font-size: 16px;
-      line-height: 16.87px;
+      font-size: 18px;
+      line-height: 18px;
 
-      @include sm {
-        font-size: 18px;
-        line-height: 26.87px;
-      }
-      @include md {
-        font-size: 20px;
-        line-height: 26.87px;
-      }
-      @include md {
-        font-size: 26px;
-        line-height: 36.87px;
-      }
+      @include fontPhotographer(18, 18, 3);
     }
 
     > div:nth-child(2) {
       font-size: 13px;
       line-height: 16.93px;
       text-align: center;
+
+      @include fontPhotographer(13, 16, 1.5);
     }
 
     > div:nth-child(3) {
       font-size: 10px;
       line-height: 13.02px;
       color: black;
+
+      @include fontPhotographer(10, 13, 1.5);
     }
 
     > div:last-child {
@@ -79,10 +62,7 @@
       line-height: 16.87px;
       font-weight: 400;
 
-      @include md {
-        font-size: 13px;
-        line-height: 16.93px;
-      }
+      @include fontPhotographer(15, 16, 0.1);
     }
   }
 }

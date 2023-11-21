@@ -4,8 +4,9 @@
 .ContactForm {
   display: flex;
   justify-content: center;
+
   &Button {
-    padding: 10px 5px;
+    padding: 20px 15px;
     border-radius: 5px;
     font-size: 14px;
     line-height: 14.04px;
@@ -14,30 +15,16 @@
     color: #FFF;
     background: $color-primary;
 
+    @include fontPhotographer(14, 16, 3);
+
     &:hover {
       cursor: pointer;
-    }
-
-    @include sm {
-      padding: 10px 5px;
-      font-size: 14px;
-      line-height: 14.04px;
-    }
-    @include md {
-      padding: 12px 7px;
-      font-size: 16px;
-      line-height: 16.04px;
-    }
-    @include lg {
-      padding: 15px 10px;
-      font-size: 20px;
-      line-height: 26.04px;
     }
   }
 
   &Modal {
     position: absolute;
-    top: 10%;
+    top: 4%;
     left: 1%;
     right: 1%;
     padding: 25px;
@@ -46,18 +33,9 @@
     background: $color-tertiary;
     z-index: 99;
 
-    @include sm {
-      left: 5%;
-      right: 5%;
-    }
-    @include md {
-      left: 25%;
-      right: 25%;
-    }
-    @include lg {
-      left: 30%;
-      right: 30%;
-    }
+    @include allBreakPoint(top, 4%, 5%, 6%, 7%);
+    @include allBreakPoint(left, 1%, 5%, 20%, 25%);
+    @include allBreakPoint(right, 1%, 5%, 20%, 25%);
 
     & > header {
       display: flex;
@@ -69,43 +47,18 @@
         line-height: 43.22px;
         font-family: 'DMSans', serif;
 
-        @include sm {
-          font-size: 24px;
-          line-height: 43.22px;
-        }
-        @include md {
-          font-size: 26px;
-          line-height: 43.22px;
-        }
-        @include lg {
-          font-size: 34px;
-          line-height: 43.22px;
-        }
-        @include xl {
-          font-size: 54px;
-          line-height: 83.22px;
-        }
+        @include fontPhotographer(24, 26, 8);
       }
 
       & > div > svg {
         width: 32px;
         height: 32px;
 
+        @include allBreakPoint(width, 23px, 33px, 43px, 53px);
+        @include allBreakPoint(height, 23px, 33px, 43px, 53px);
+
         &:hover {
           cursor: pointer;
-        }
-
-        @include sm {
-          width: 42px;
-          height: 42px;
-        }
-        @include md {
-          width: 62px;
-          height: 62px;
-        }
-        @include lg {
-          width: 72px;
-          height: 72px;
         }
       }
     }
@@ -116,22 +69,7 @@
         line-height: 43.22px;
         font-family: 'DMSans', serif;
 
-        @include sm {
-          font-size: 24px;
-          line-height: 43.22px;
-        }
-        @include md {
-          font-size: 26px;
-          line-height: 43.22px;
-        }
-        @include lg {
-          font-size: 34px;
-          line-height: 43.22px;
-        }
-        @include xl {
-          font-size: 54px;
-          line-height: 83.22px;
-        }
+        @include fontPhotographer(24, 26, 8);
       }
 
       & > div:last-child {

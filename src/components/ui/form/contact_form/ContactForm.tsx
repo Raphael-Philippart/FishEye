@@ -27,8 +27,7 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
               <svg viewBox='0 0 72 72' fill='none' xmlns='http://www.w3.org/2000/svg'>
                 <path
                   d='M57 19.23L52.77 15L36 31.77L19.23 15L15 19.23L31.77 36L15 52.77L19.23 57L36 40.23L52.77 57L57 52.77L40.23 36L57 19.23Z'
-                  fill='white'
-                />
+                  fill='white' />
               </svg>
             </div>
           </header>
