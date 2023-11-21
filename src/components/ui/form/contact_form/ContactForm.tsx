@@ -17,7 +17,7 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
   return (
     <>
       <div className='ContactForm'>
-        <button className='ContactFormButton' onClick={handleModal}>Contactez-moi</button>
+        <button className='ContactFormButton' onClick={handleModal} tabIndex={2}>Contactez-moi</button>
       </div>
       {modal &&
         <section className='ContactFormModal'>

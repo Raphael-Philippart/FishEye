@@ -15,97 +15,82 @@
     padding: 25px 50px 0;
   }
 
-  & > section {
-    & > header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  &Header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-secondary;
+    padding: 20px 50px;
+
+    @include lg {
+      flex-direction: row;
+      justify-content: space-between;
       align-items: center;
-      background: $color-secondary;
-      padding: 20px 50px;
+    }
 
-      @include lg {
-        flex-direction: row;
-        justify-content: space-between;
-      }
+    & > div {
+      flex-basis: 30%;
+    }
 
-      & > div > div:first-child {
-        font-size: 26px;
-        line-height: 23.33px;
-        color: $color-primary;
-        font-family: 'DMSans', serif;
-        text-align: center;
+    &Name {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      color: $color-primary;
+      font-family: 'DMSans', serif;
+      font-size: 20px;
+      line-height: 22px;
 
-        @include sm {
-          font-size: 28px;
-          line-height: 33.33px;
-        }
-        @include md {
-          font-size: 24px;
-          line-height: 43.33px;
-        }
-        @include md {
-          font-size: 64px;
-          line-height: 83.33px;
-        }
-      }
+      @include fontPhotographer(20, 22, 10);
+      @include allBreakPoint(justify-content, center, center, flex-start, flex-start);
+    }
 
-      & > div > div:nth-child(2) {
-        font-size: 18px;
-        line-height: 21.25px;
-        color: $color-primary;
-        font-family: 'DMSans', serif;
-        text-align: center;
+    &City {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 16px;
 
-        @include md {
-          font-size: 20px;
-          line-height: 21.25px;
-          text-align: left;
-        }
-        @include md {
-          font-size: 24px;
-          line-height: 31.25px;
-          text-align: left;
-        }
-      }
+      @include fontPhotographer(14, 16, 10);
+      @include allBreakPoint(justify-content, center, center, flex-start, flex-start);
+    }
 
-      & > div > div:nth-child(3) {
-        font-size: 16px;
-        line-height: 20.44px;
-        font-family: 'DMSans', serif;
-        text-align: center;
+    &TagLine {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
 
-        @include md {
-          font-size: 18px;
-          line-height: 22.44px;
-          text-align: left;
-        }
-        @include md {
-          font-size: 20px;
-          line-height: 23.44px;
-          text-align: left;
-        }
-      }
+      @include allBreakPoint(justify-content, flex-start, flex-start, flex-start, flex-start);
+    }
+  }
 
-      & > div:last-child > img {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
+  &Contact {
+    display: flex;
+    justify-content: center;
+  }
+
+  &Avatar {
+    display: flex;
+    justify-content: flex-end;
+
+    & > div {
+      display: flex;
+      justify-content: flex-end;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+
+      @include allBreakPoint(width, 150px, 200px, 250px, 300px);
+      @include allBreakPoint(height, 150px, 200px, 250px, 300px);
+
+      & > img {
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
+        object-fit: cover;
         overflow: hidden;
-
-        @include sm {
-          width: 150px;
-          height: 150px;
-        }
-        @include md {
-          width: 200px;
-          height: 200px;
-        }
-        @include lg {
-          width: 250px;
-          height: 250px;
-        }
       }
     }
   }

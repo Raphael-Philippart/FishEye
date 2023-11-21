@@ -27,3 +27,39 @@
     @content;
   }
 }
+
+@mixin allBreakPoint($property, $valueSM, $valueMD, $valueLG, $valueXL) {
+  @include sm {
+    #{$property}: $valueSM;
+  }
+  @include md {
+    #{$property}: $valueMD;
+  }
+  @include lg {
+    #{$property}: $valueLG;
+  }
+  @include xl {
+    #{$property}: $valueXL;
+  }
+}
+
+@mixin fontPhotographer($fontSize, $lineHeight, $multiplier) {
+  $unit: px;
+
+  @include sm {
+    font-size: $fontSize + $unit;
+    line-height: $lineHeight + $unit;
+  }
+  @include md {
+    font-size: ($fontSize + $multiplier) + $unit;
+    line-height: ($lineHeight + $multiplier) + $unit;
+  }
+  @include lg {
+    font-size: ($fontSize + (2 * $multiplier)) + $unit;
+    line-height: ($lineHeight + (2 * $multiplier)) + $unit;
+  }
+  @include xl {
+    font-size: ($fontSize + (3 * $multiplier)) + $unit;
+    line-height: ($lineHeight + (3 * $multiplier)) + $unit;
+  }
+}

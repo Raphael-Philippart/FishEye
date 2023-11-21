@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { TParams, IPhotographer, IDataPhotographers } from '../../utils/types/Types';
+import { TParams, IPhotographer, IDataPhotographers, IMedia } from '../../utils/types/Types';
 import { useParams } from 'react-router-dom';
 import Logo from '../../components/modules/logo/Logo';
 import Link from '../../components/ui/link/Link';
 import Api from '../../utils/api/Api';
 import Image from '../../components/ui/image/Image';
 import ContactForm from '../../components/ui/form/contact_form/ContactForm';
+import PhotographerGallery from '../../components/modules/photographer/PhotographerGallery';
 import './Photographer.scss';
-import './PhotographerGallery.scss';
 
 const Photographer = () => {
-  const host: string = window.location.host;
-  const protocol: string = window.location.protocol;
   const { id } = useParams<TParams>();
   const [photographers, setPhotographers] = useState<IDataPhotographers>({ photographers: [], media: [] });
   const [photographer, setPhotographer] = useState<IPhotographer>({
@@ -23,6 +21,15 @@ const Photographer = () => {
     tagline: '',
     price: 0,
   });
+  const [media, setMedia] = useState<IMedia[]>([{
+    id: 0,
+    photographerId: 0,
+    title: '',
+    image: '',
+    likes: 0,
+    date: '',
+    price: 0,
+  }]);
 
   useEffect(() => {
     const getPhotographers = async (): Promise<void> => {
@@ -34,7 +41,9 @@ const Photographer = () => {
 
   useEffect(() => {
     const photographerById: IPhotographer | undefined = photographers!.photographers!.find((p: IPhotographer) => p.id === parseInt(id!));
+    const mediaPhotographerById: IMedia[] | undefined = photographers!.media!.filter((p: IMedia) => p.photographerId === parseInt(id!));
     setPhotographer(photographerById!);
+    setMedia(mediaPhotographerById!);
   }, [photographers]);
 
   return (
@@ -53,22 +62,24 @@ const Photographer = () => {
       </div>}
       {photographer &&
         <section>
-          <header>
+          <header className='PhotographerHeader'>
             <div>
-              <div>{photographer.name}</div>
-              <div>{photographer.city}, {photographer.country}</div>
-              <div>{photographer.tagline}</div>
+              <div className='PhotographerHeaderName'>{photographer.name}</div>
+              <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
+              <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
             </div>
-            <div>
+            <div className='PhotographerHeaderContact'>
               <ContactForm photographer={photographer} />
             </div>
-            <div>
-              <Image src={`${protocol}//${host}/assets/images/Portraits/${photographer.portrait}`}
-                     alt={photographer.tagline} />
+            <div className='PhotographerAvatar'>
+              <div>
+                <Image src={`/assets/images/Portraits/${photographer.portrait}`}
+                       alt={photographer.tagline} />
+              </div>
             </div>
           </header>
-          <div className='PhotographerGallery'>
-            PhotographerGallery
+          <div>
+            <PhotographerGallery media={media} />
           </div>
         </section>
       }
