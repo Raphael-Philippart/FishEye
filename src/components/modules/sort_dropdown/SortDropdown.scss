@@ -4,31 +4,101 @@
 .SortDropdown {
 
   & > div {
-    padding: 15px 10px;
-    color: #FFFFFF;
-    border: 0;
-    border-radius: 5px;
-    background: $color-primary;
     position: relative;
     display: inline-block;
-    min-width: 140px;
-    overflow: hidden;
+    min-width: 160px;
+    font-family: 'DMSans', serif;
 
     @include fontPhotographer(14, 16, 0.8);
 
-    & > a {
-      color: #FFFFFF;
-      text-decoration: none;
+    & > div:first-child {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > button {
+        color: #FFFFFF;
+        text-align: left;
+        font-family: 'DMSans', serif;
+        text-decoration: none;
+        padding: 15px 15px;
+        min-width: 160px;
+        height: 100%;
+        border: 0;
+        border-radius: 5px;
+        background: $color-primary;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include fontPhotographer(14, 16, 0.8);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 
   &Content {
     display: flex;
     flex-direction: column;
+    padding: 0 15px 15px;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    min-width: 160px;
+    height: auto;
+    background: $color-primary;
 
     & > a {
+      position: relative;
       color: #FFFFFF;
       text-decoration: none;
+      margin: 15px 0 5px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        top: -10px;
+        left: 0;
+      }
     }
+  }
+}
+
+.rotate, {
+  transform: rotate(180deg);
+  animation-name: rotateOpenAnimation;
+  animation-duration: .5s;
+}
+
+.unrotate, {
+  transform: rotate(0deg);
+  animation-name: rotateCloseAnimation;
+  animation-duration: .5s;
+}
+
+@keyframes rotateOpenAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+
+@keyframes rotateCloseAnimation {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
