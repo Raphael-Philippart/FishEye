@@ -21,11 +21,11 @@
         color: #FFFFFF;
         text-align: left;
         font-family: 'DMSans', serif;
-        padding: 15px 15px;
         min-width: 160px;
+        min-height: 50px;
+        padding: 0 15px;
         height: 100%;
         border: 0;
-        border-radius: 5px;
         background: $color-primary;
         display: flex;
         justify-content: space-between;
@@ -43,21 +43,21 @@
   &Content {
     display: flex;
     flex-direction: column;
-    padding: 0 15px 15px;
-    border-radius: 0 0 5px 5px;
     position: absolute;
-    top: 40px;
+    top: 50px;
     left: 0;
     min-width: 160px;
     height: auto;
     background: $color-primary;
+    border-radius: 5px;
 
     & > button {
       position: relative;
       color: #FFFFFF;
       text-align: left;
       font-family: 'DMSans', serif;
-      margin: 15px 0 5px;
+      min-height: 50px;
+      padding: 0 15px;
       border: 0;
       background: $color-primary;
 
@@ -66,11 +66,14 @@
       &:before {
         content: "";
         position: absolute;
-        width: 100%;
-        height: 2px;
+        width: 80%;
+        height: 1px;
         background-color: white;
-        top: -10px;
-        left: 0;
+        top: 0;
+        left: 15px;
+      }
+      &:last-child {
+        border-radius: 0 0 5px 5px;
       }
 
       &:hover {
@@ -78,6 +81,14 @@
       }
     }
   }
+}
+
+.BorderRadiusOpen {
+  border-radius: 5px 5px 0 0;
+}
+
+.BorderRadiusClose {
+  border-radius: 5px;
 }
 
 .rotate, {
