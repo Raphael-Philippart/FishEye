@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { IPhotographer } from '../../../../utils/types/Types';
+import { usePhotographerContext } from '../../../../context/PhotographerContext';
 import './ContactForm.scss';
 
 const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
+  const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const [modal, setModal] = useState(false);
 
   const handleModal = () => {
@@ -29,9 +31,9 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
   }, [modal]);
 
   return <>
-    <div className='ContactForm'>
+    {!statusLightBox && <div className='ContactForm'>
       <button className='ContactFormButton' onClick={handleModal} tabIndex={2}>Contactez-moi</button>
-    </div>
+    </div>}
     {modal &&
       <section className='ContactFormModal'>
         <header>
