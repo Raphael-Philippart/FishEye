@@ -25,12 +25,11 @@ const Lightbox = ({ media }: { media: IMedia[] }) => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      console.log(e.key);
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && statusLightBox) {
         handleLightBox();
-      } else if (e.key === 'ArrowLeft' || e.key === '4') {
+      } else if (e.key === 'ArrowLeft' || e.key === '4' && statusLightBox) {
         slideLeft();
-      }else if (e.key === 'ArrowRight' || e.key === '6') {
+      }else if (e.key === 'ArrowRight' || e.key === '6' && statusLightBox) {
         slideRight();
       }
     };

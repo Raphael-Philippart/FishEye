@@ -16,8 +16,7 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      console.log(e.key);
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && modal) {
         handleModal();
       }
     };
