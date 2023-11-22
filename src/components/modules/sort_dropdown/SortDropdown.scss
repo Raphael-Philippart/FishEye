@@ -5,36 +5,45 @@
 
   & > div {
     position: relative;
-    display: inline-block;
     min-width: 160px;
     font-family: 'DMSans', serif;
 
     @include fontPhotographer(14, 16, 0.8);
 
     & > div:first-child {
-      position: relative;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
 
-      & > button {
-        color: #FFFFFF;
-        text-align: left;
-        font-family: 'DMSans', serif;
+      & > div {
+        position: relative;
+        display: flex;
         min-width: 160px;
         min-height: 50px;
-        padding: 0 15px;
-        height: 100%;
-        border: 0;
         background: $color-primary;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
-        @include fontPhotographer(14, 16, 0.8);
+        & > button {
+          color: #FFFFFF;
+          text-align: left;
+          font-family: 'DMSans', serif;
+          padding: 0 15px;
+          border: 0;
+          background: $color-primary;
 
-        &:hover {
-          cursor: pointer;
+          @include fontPhotographer(14, 16, 0.8);
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        & > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -71,9 +80,6 @@
         background-color: white;
         top: 0;
         left: 15px;
-      }
-      &:last-child {
-        border-radius: 0 0 5px 5px;
       }
 
       &:hover {
