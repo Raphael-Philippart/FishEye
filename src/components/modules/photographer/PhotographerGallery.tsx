@@ -14,7 +14,7 @@ const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
   const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const { mediaLightBox, updateMediaLightBox } = usePhotographerContext();
   const [sortMedia, setSortMedia] = useState(media);
-  const startTabIndex: number = 11;
+  const startTabIndex: number = 12;
 
   const handleLightBox = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const eventID = e.currentTarget.children.item(0);

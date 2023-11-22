@@ -41,11 +41,11 @@
 
   &Media {
     width: 100%;
-    height: 120px;
+    height: 250px;
     border: 0;
     background: transparent;
 
-    @include allBreakPoint(height, 120px, 150px, 250px, 350px);
+    @include allBreakPoint(height, 250px, 350px, 450px, 450px);
 
     &:hover {
       cursor: pointer;
