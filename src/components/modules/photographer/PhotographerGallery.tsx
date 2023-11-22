@@ -12,7 +12,7 @@ import './PhotographerGallery.scss';
 const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
   const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const { mediaLightBox, updateMediaLightBox } = usePhotographerContext();
-  const startTabIndex: number = 7;
+  const startTabIndex: number = 11;
 
   const handleLightBox = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const eventID = e.currentTarget.children.item(0);

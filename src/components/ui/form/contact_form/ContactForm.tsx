@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IPhotographer } from '../../../../utils/types/Types';
 import './ContactForm.scss';
 
@@ -13,6 +13,21 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
     e.preventDefault();
     console.log('SUBMIT');
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      console.log(e.key);
+      if (e.key === 'Escape') {
+        handleModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [modal]);
 
   return (
     <>
@@ -36,14 +51,14 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
             <div>
               <form action='/' method='POST'>
                 <label htmlFor='firstname'>Prénom</label>
-                <input type='text' id='firstname' name='firstname' />
+                <input type='text' id='firstname' name='firstname' tabIndex={3}/>
                 <label htmlFor='lastname'>Nom</label>
-                <input type='text' id='lastname' name='lastname' />
+                <input type='text' id='lastname' name='lastname' tabIndex={4} />
                 <label htmlFor='email'>Email</label>
-                <input type='mail' id='email' name='email' />
+                <input type='mail' id='email' name='email' tabIndex={5} />
                 <label htmlFor='message'>Votre message</label>
-                <textarea name='message' id='message'></textarea>
-                <input type='submit' value='Envoyer' onClick={e => handleSubmit(e)} />
+                <textarea name='message' id='message' tabIndex={6}></textarea>
+                <input type='submit' value='Envoyer' onClick={e => handleSubmit(e)} tabIndex={7} />
               </form>
             </div>
           </div>

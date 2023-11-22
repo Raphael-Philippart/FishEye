@@ -11,7 +11,7 @@ const SortDropdown = () => {
   return <div className='SortDropdown'>
     <div>
       <div>
-        <button tabIndex={3} onClick={handleClickDropdown}>
+        <button tabIndex={8} onClick={handleClickDropdown}>
           Popularité
           <div className={`${state ? 'rotate' : 'unrotate'}`}>
             <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,8 +22,8 @@ const SortDropdown = () => {
       </div>
       {state &&
         <div className={'SortDropdownContent'}>
-          <a href='#' tabIndex={4}>Date</a>
-          <a href='#' tabIndex={5} onBlur={handleClickDropdown}>Titre</a>
+          <a href='#' tabIndex={9}>Date</a>
+          <a href='#' tabIndex={10} onBlur={handleClickDropdown}>Titre</a>
         </div>
       }
     </div>
