@@ -20,29 +20,28 @@ export const PhotographerProvider: React.FC<LightBoxProviderProps> = ({ children
   const [likes, setLikes] = useState<number>(0);
   const [mediaLightBox, setMediaLightBox] = useState<string>('');
 
-  const updateStatusLightBox  = (newStatus: boolean) => {
+  const updateStatusLightBox = (newStatus: boolean) => {
     setStatus(newStatus);
   };
 
-  const updateLikes  = (newLikes: number) => {
+  const updateLikes = (newLikes: number) => {
     setLikes(newLikes);
   };
 
-  const updateMediaLightBox  = (newMedia: string) => {
+  const updateMediaLightBox = (newMedia: string) => {
     setMediaLightBox(newMedia);
   };
 
-  return (
-    <PhotographerContext.Provider value={{ statusLightBox, updateStatusLightBox, likes, updateLikes, mediaLightBox, updateMediaLightBox }}>
-      {children}
-    </PhotographerContext.Provider>
-  );
+  return <PhotographerContext.Provider
+    value={{ statusLightBox, updateStatusLightBox, likes, updateLikes, mediaLightBox, updateMediaLightBox }}>
+    {children}
+  </PhotographerContext.Provider>;
 };
 
 export const usePhotographerContext = (): PhotographerProps => {
-  const context = useContext(PhotographerContext);
+  const context: PhotographerProps | undefined = useContext(PhotographerContext);
   if (!context) {
-    throw new Error('useMyContext doit être utilisé à l\'intérieur de MyProvider');
+    throw new Error(`usePhotographerContext doit être utilisé à l'intérieur de PhotographerProvider`);
   }
   return context;
 };

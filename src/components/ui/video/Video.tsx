@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import './Video.scss';
 
 const Video = ({ src, id, type = 'video/mp4', controls = false }: {

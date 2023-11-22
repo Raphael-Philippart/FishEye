@@ -21,7 +21,6 @@
         color: #FFFFFF;
         text-align: left;
         font-family: 'DMSans', serif;
-        text-decoration: none;
         padding: 15px 15px;
         min-width: 160px;
         height: 100%;
@@ -53,11 +52,16 @@
     height: auto;
     background: $color-primary;
 
-    & > a {
+    & > button {
       position: relative;
       color: #FFFFFF;
-      text-decoration: none;
+      text-align: left;
+      font-family: 'DMSans', serif;
       margin: 15px 0 5px;
+      border: 0;
+      background: $color-primary;
+
+      @include fontPhotographer(14, 16, 0.8);
 
       &:before {
         content: "";
@@ -67,6 +71,10 @@
         background-color: white;
         top: -10px;
         left: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }

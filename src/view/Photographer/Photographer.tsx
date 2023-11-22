@@ -45,56 +45,53 @@ const Photographer = () => {
   useEffect(() => {
     const photographerById: IPhotographer | undefined = photographers!.photographers!.find((p: IPhotographer) => p.id === parseInt(id!));
     const mediaPhotographerById: IMedia[] | undefined = photographers!.media!.filter((p: IMedia) => p.photographerId === parseInt(id!));
-    //const totalLikes = mediaPhotographerById.reduce((sum: number, media: IMedia) => sum + media.likes, 0);
+
     setPhotographer(photographerById!);
     setMedia(mediaPhotographerById!);
-    //setLikes(totalLikes);
   }, [photographers]);
 
-  return (
-    <PhotographerProvider>
-      <main className='Photographer'>
-        <header>
-          <div>
-            <Link href={`/`}>
-              <Logo />
-            </Link>
-          </div>
-        </header>
-        {!photographer && <div>
-          Désole non ne trouvons pas de photographe avec cette ID ...
-          <br />
-          <a href='/'>Retour à Accueil</a>
-        </div>}
-        {photographer &&
-          <>
-            <section>
-              <header className='PhotographerHeader'>
-                <div>
-                  <div className='PhotographerHeaderName'>{photographer.name}</div>
-                  <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
-                  <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
-                </div>
-                <div className='PhotographerHeaderContact'>
-                  <ContactForm photographer={photographer} />
-                </div>
-                <div className='PhotographerAvatar'>
-                  <div>
-                    <Image src={`/assets/images/Portraits/${photographer.portrait}`}
-                           alt={photographer.tagline} />
-                  </div>
-                </div>
-              </header>
+  return <PhotographerProvider>
+    <main className='Photographer'>
+      <header>
+        <div>
+          <Link href={`/`}>
+            <Logo />
+          </Link>
+        </div>
+      </header>
+      {!photographer && <div>
+        Désole non ne trouvons pas de photographe avec cette ID ...
+        <br />
+        <a href='/'>Retour à Accueil</a>
+      </div>}
+      {photographer &&
+        <>
+          <section>
+            <header className='PhotographerHeader'>
               <div>
-                <PhotographerGallery media={media} />
+                <div className='PhotographerHeaderName'>{photographer.name}</div>
+                <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
+                <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
               </div>
-            </section>
-            <LikesPrice media={media} price={photographer.price} />
-          </>
-        }
-      </main>
-    </PhotographerProvider>
-  );
+              <div className='PhotographerHeaderContact'>
+                <ContactForm photographer={photographer} />
+              </div>
+              <div className='PhotographerAvatar'>
+                <div>
+                  <Image src={`/assets/images/Portraits/${photographer.portrait}`}
+                         alt={photographer.tagline} />
+                </div>
+              </div>
+            </header>
+            <div>
+              <PhotographerGallery media={media} />
+            </div>
+          </section>
+          <LikesPrice media={media} price={photographer.price} />
+        </>
+      }
+    </main>
+  </PhotographerProvider>;
 };
 
 export default Photographer;

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { IMedia } from '../../../utils/types/Types';
 import { usePhotographerContext } from '../../../context/PhotographerContext';
-import './Lightbox.scss';
 import Image from '../../ui/image/Image';
 import Video from '../../ui/video/Video';
+import './Lightbox.scss';
 
 const Lightbox = ({ media }: { media: IMedia[] }) => {
   const { statusLightBox, updateStatusLightBox } = usePhotographerContext();

@@ -13,6 +13,10 @@
     align-items: center;
     column-gap: 15px;
     margin-bottom: 15px;
+    font-family: 'DMSans', serif;
+    font-weight: 700;
+
+    @include fontPhotographer(18, 18, 1);
   }
 
   & > div:nth-child(2) {

@@ -4,11 +4,9 @@ import Image from '../../ui/image/Image';
 import './Logo.scss';
 
 const Logo = () => {
-  return (
-    <div className='Logo'>
-      <Image src={logo} alt='Logo FishEye' />
-    </div>
-  );
+  return <div className='Logo'>
+    <Image src={logo} alt='Logo FishEye' />
+  </div>;
 };
 
 export default Logo;
