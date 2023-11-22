@@ -1,14 +1,13 @@
 import { ReactNode } from 'react';
 import './Video.scss';
 
-const Video = ({ src, id, type = 'video/mp4', controls = false, tabIndex = 0 }: {
+const Video = ({ src, id, type = 'video/mp4', controls = false }: {
   src: string,
   id?: string,
   type?: string,
   controls?: boolean,
-  tabIndex?: number
 }) => {
-  return <video className={'Video'} controls={controls} id={id} tabIndex={tabIndex}>
+  return <video className={'Video'} controls={controls} id={id}>
     <source src={src} type={type} />
   </video>;
 };

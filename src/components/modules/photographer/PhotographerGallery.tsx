@@ -35,7 +35,7 @@ const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
                   {item.image && <Image src={`/assets/images/${item.photographerId}/${item.image}`} alt={item.title}
                                         id={`${item.id}`} />}
                   {item.video && <Video src={`/assets/images/${item.photographerId}/${item.video}`}
-                                        tabIndex={startTabIndex + index} id={`${item.id}`} />}
+                                        id={`${item.id}`} />}
                 </button>
                 <div className='PhotographerGalleryMediaInfo'>
                   <div>{item.title}</div>

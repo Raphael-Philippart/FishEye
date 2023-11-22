@@ -29,7 +29,7 @@ const Lightbox = ({ media }: { media: IMedia[] }) => {
         handleLightBox();
       } else if (e.key === 'ArrowLeft' || e.key === '4' && statusLightBox) {
         slideLeft();
-      }else if (e.key === 'ArrowRight' || e.key === '6' && statusLightBox) {
+      } else if (e.key === 'ArrowRight' || e.key === '6' && statusLightBox) {
         slideRight();
       }
     };
@@ -53,19 +53,22 @@ const Lightbox = ({ media }: { media: IMedia[] }) => {
         </button>
         <div>
           <button onClick={slideLeft} tabIndex={1}>
-            <svg width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M29.6399 42.36L11.3199 24L29.6399 5.64L23.9999 -2.46532e-07L-0.000107861 24L23.9999 48L29.6399 42.36Z" fill="#911C1C"/>
+            <svg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path
+                d='M29.6399 42.36L11.3199 24L29.6399 5.64L23.9999 -2.46532e-07L-0.000107861 24L23.9999 48L29.6399 42.36Z'
+                fill='#911C1C' />
             </svg>
           </button>
           {media[current].image &&
             <Image src={`/assets/images/${media[current].photographerId}/${media[current].image}`}
                    alt={media[current].title} id={'lightbox'} />}
           {media[current].video &&
-            <Video src={`/assets/images/${media[current].photographerId}/${media[current].video}`}
-                   tabIndex={0} controls={true} />}
+            <Video src={`/assets/images/${media[current].photographerId}/${media[current].video}`} controls={true} />}
           <button onClick={slideRight} tabIndex={2}>
-            <svg width="30" height="48" viewBox="0 0 30 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0.360108 5.64L18.6801 24L0.360107 42.36L6.00011 48L30.0001 24L6.00011 3.88195e-06L0.360108 5.64Z" fill="#911C1C"/>
+            <svg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path
+                d='M0.360108 5.64L18.6801 24L0.360107 42.36L6.00011 48L30.0001 24L6.00011 3.88195e-06L0.360108 5.64Z'
+                fill='#911C1C' />
             </svg>
           </button>
         </div>
