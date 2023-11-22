@@ -71,6 +71,7 @@
       padding: 0 15px;
       border: 0;
       background: $color-primary;
+      border-radius: 0 0 5px 5px;
 
       @include fontPhotographer(14, 16, 0.8);
 
