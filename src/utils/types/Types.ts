@@ -27,3 +27,5 @@ export interface IDataPhotographers {
 export type TParams = {
   id: string | undefined;
 };
+
+export type TComparatorSortMedia = (a: IMedia, b: IMedia) => number;

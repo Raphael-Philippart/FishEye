@@ -1,33 +1,25 @@
-import { IMedia } from '../types/Types';
+import { IMedia, TComparatorSortMedia } from '../types/Types';
 
-const Sort = (images: IMedia[], sort: string) => {
-  let sortedImages : IMedia[] = [];
+export const sortChoices: string[] = [
+  'Popularité',
+  'Date',
+  'Titre',
+];
 
-  if (sort === 'popularity') {
-    sortedImages = [...images].sort((a, b) => b.likes - a.likes);
-  }
+export const sortByPopularity: TComparatorSortMedia = (a: IMedia, b: IMedia) => b.likes - a.likes;
+// sortByDate need refactoring if Date in object photographer change
+export const sortByDate: TComparatorSortMedia = (a: IMedia, b: IMedia) => new Date(b.date).valueOf() - new Date(a.date).valueOf();
+export const sortByTitle: TComparatorSortMedia = (a: IMedia, b: IMedia) => a.title.localeCompare(b.title);
 
-  if (sort === 'date') {
-    sortedImages = [...images].sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
-  }
 
-  if (sort === 'title') {
-    sortedImages = [...images].sort((a, b) => {
-      const titleA = a.title.toUpperCase();
-      const titleB = b.title.toUpperCase();
+const Sort = (media: IMedia[], choice: string) => {
+  const sortedMedia: IMedia[] = [...media];
 
-      if (titleA < titleB) {
-        return -1;
-      }
-      if (titleA > titleB) {
-        return 1;
-      }
-      // names must be equal
-      return 0;
-    });
-  }
+  if (choice === 'Popularité') sortedMedia.sort(sortByPopularity);
+  if (choice === 'Date') sortedMedia.sort(sortByDate);
+  if (choice === 'Titre') sortedMedia.sort(sortByTitle);
 
-  return sortedImages;
-}
+  return sortedMedia;
+};
 
 export default Sort;

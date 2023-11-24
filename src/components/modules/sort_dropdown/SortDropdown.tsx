@@ -1,24 +1,62 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePhotographerContext } from '../../../context/PhotographerContext';
+import { sortChoices } from '../../../utils/images/Sort';
 import './SortDropdown.scss';
 
 const SortDropdown = ({ sort }: { sort: any }) => {
+  const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const [state, setState] = useState(false);
+  const [selectedChoice, setSelectedChoice] = useState<string[]>();
+  const [choice, setChoice] = useState<string>('Titre');
+  const [indexChoice, setIndexChoice] = useState(0);
 
   const handleDropdown = () => {
     setState(prevState => !prevState);
   };
 
-  const handleSort = (order: any) => {
+  const handleSort = (order: string) => {
+    const unSelectedChoice = sortChoices.filter((c: string) => c !== order);
+    setSelectedChoice(unSelectedChoice);
+    setChoice(order);
     sort(order);
   };
+
+  useEffect(() => {
+    handleSort(choice);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!statusLightBox && state && (e.key === 'Escape')) {
+        handleDropdown();
+      } else if (!statusLightBox && (e.key === '8')) {
+        setIndexChoice(prevIndex=> prevIndex <= 0 ? sortChoices.length - 1 : prevIndex - 1);
+        handleSort(sortChoices[indexChoice]);
+      } else if (!statusLightBox && (e.key === '2')) {
+        setIndexChoice(prevIndex=> prevIndex >= (sortChoices.length - 1) ? 0 : prevIndex + 1);
+        handleSort(sortChoices[indexChoice]);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [choice, indexChoice, statusLightBox]);
+
+  useEffect(() => {
+    console.log('------------------------------------');
+    console.log('(sortChoices.length)', (sortChoices.length));
+    console.log('choice', choice);
+    console.log('indexChoice', indexChoice);
+    console.log('selectedChoice', selectedChoice);
+  }, [choice, indexChoice, selectedChoice, handleDropdown]);
 
   return <div className='SortDropdown'>
     <div>
       <div>
         <div className={`${state ? 'BorderRadiusOpen' : 'BorderRadiusClose'}`}>
-          <button onClick={() => handleSort('popularity')} tabIndex={9}
+          <button onClick={() => handleSort('Popularité')} tabIndex={9}
                   className={`${state ? 'BorderRadiusOpen' : 'BorderRadiusClose'}`}>
-            Popularité
+            {choice}
           </button>
           <button className={`${state ? 'rotate ' : 'unrotate'}`} onClick={handleDropdown} tabIndex={8}>
             <svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -28,12 +66,11 @@ const SortDropdown = ({ sort }: { sort: any }) => {
           </button>
         </div>
       </div>
-      {state &&
-        <div className={'SortDropdownContent'}>
-          <button tabIndex={10} onClick={() => handleSort('date')}>Date</button>
-          <button tabIndex={11} onClick={() => handleSort('title')}>Titre</button>
-        </div>
-      }
+      <div className={'SortDropdownContent'}>
+        {state && selectedChoice!.map((c: string, i: number) => {
+          return <button key={`selectedChoice-${i}`} tabIndex={10 + i} onClick={() => handleSort(c)}>{c}</button>;
+        })}
+      </div>
     </div>
   </div>;
 };

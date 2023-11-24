@@ -6,6 +6,7 @@
   & > div {
     position: relative;
     min-width: 160px;
+    height: 100%;
     font-family: 'DMSans', serif;
 
     @include fontPhotographer(14, 16, 0.8);
@@ -27,18 +28,19 @@
           padding: 0 15px;
           border: 0;
           background: $color-primary;
+          width: 100%;
 
           @include fontPhotographer(14, 16, 0.8);
 
           &:hover {
             cursor: pointer;
           }
+          &:last-child {
+            flex-basis: 40%;
+          }
         }
 
         & > button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
           width: 100%;
           height: 100%;
           background: transparent;
@@ -100,13 +102,13 @@
   border-radius: 5px;
 }
 
-.rotate, {
+.rotate {
   transform: rotate(180deg);
   animation-name: rotateOpenAnimation;
   animation-duration: .5s;
 }
 
-.unrotate, {
+.unrotate {
   transform: rotate(0deg);
   animation-name: rotateCloseAnimation;
   animation-duration: .5s;
