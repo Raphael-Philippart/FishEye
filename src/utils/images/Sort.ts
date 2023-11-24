@@ -7,7 +7,7 @@ export const sortChoices: string[] = [
 ];
 
 export const sortByPopularity: TComparatorSortMedia = (a: IMedia, b: IMedia) => b.likes - a.likes;
-// sortByDate need refactoring if Date in object photographer change
+// sortByDate need refactoring if change Date in object media
 export const sortByDate: TComparatorSortMedia = (a: IMedia, b: IMedia) => new Date(b.date).valueOf() - new Date(a.date).valueOf();
 export const sortByTitle: TComparatorSortMedia = (a: IMedia, b: IMedia) => a.title.localeCompare(b.title);
 
