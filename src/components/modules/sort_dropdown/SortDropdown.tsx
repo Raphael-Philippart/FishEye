@@ -40,7 +40,7 @@ const SortDropdown = ({ sort }: { sort: any }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [choice, indexChoice, statusLightBox]);
+  }, [statusLightBox, state, choice, indexChoice]);
 
   return <div className='SortDropdown'>
     <div>
