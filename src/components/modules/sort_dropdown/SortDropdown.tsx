@@ -42,14 +42,6 @@ const SortDropdown = ({ sort }: { sort: any }) => {
     };
   }, [choice, indexChoice, statusLightBox]);
 
-  useEffect(() => {
-    console.log('------------------------------------');
-    console.log('(sortChoices.length)', (sortChoices.length));
-    console.log('choice', choice);
-    console.log('indexChoice', indexChoice);
-    console.log('selectedChoice', selectedChoice);
-  }, [choice, indexChoice, selectedChoice, handleDropdown]);
-
   return <div className='SortDropdown'>
     <div>
       <div>
