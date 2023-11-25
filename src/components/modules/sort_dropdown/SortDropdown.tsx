@@ -8,7 +8,7 @@ const SortDropdown = ({ sort }: { sort: any }) => {
   const [state, setState] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState<string[]>();
   const [choice, setChoice] = useState<string>('Titre');
-  const [indexChoice, setIndexChoice] = useState(0);
+  const [indexChoice, setIndexChoice] = useState(sortChoices.findIndex((e :string) => e === choice));
 
   const handleDropdown = () => {
     setState(prevState => !prevState);
@@ -46,7 +46,7 @@ const SortDropdown = ({ sort }: { sort: any }) => {
     <div>
       <div>
         <div className={`${state ? 'BorderRadiusOpen' : 'BorderRadiusClose'}`}>
-          <button onClick={() => handleSort('Popularité')} tabIndex={9} aria-label={choice}
+          <button onClick={() => handleSort(choice)} tabIndex={9} aria-label={choice}
                   className={`${state ? 'BorderRadiusOpen' : 'BorderRadiusClose'}`}>
             {choice}
           </button>

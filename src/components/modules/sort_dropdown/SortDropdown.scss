@@ -103,12 +103,18 @@
 }
 
 .rotate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: rotate(180deg);
   animation-name: rotateOpenAnimation;
   animation-duration: .5s;
 }
 
 .unrotate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: rotate(0deg);
   animation-name: rotateCloseAnimation;
   animation-duration: .5s;
