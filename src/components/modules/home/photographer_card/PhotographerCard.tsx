@@ -11,7 +11,7 @@ const PhotographerCard = ({ photographer, tabIndex }: { photographer: IPhotograp
   return <div className='PhotographerCard'>
     <header>
       <div>
-        <Link href={`photographer/${photographer.id}`} tabIndex={tabIndex}>
+        <Link href={`photographer/${photographer.id}`} ariaLabel={`Photographe : ${photographer.name}`} tabIndex={tabIndex}>
           <Image src={`${protocol}//${host}/assets/images/Portraits/${photographer.portrait}`}
                  alt={photographer.tagline} />
         </Link>

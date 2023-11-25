@@ -21,7 +21,7 @@ const Home = () => {
 
   return <div className='Home'>
     <header className='HomeHeader'>
-      <Link href='/'>
+      <Link href='/' ariaLabel={'Logo fishEye, Retour à l\'accueil'}>
         <Logo />
       </Link>
       <div>Nos photographes</div>

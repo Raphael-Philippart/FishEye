@@ -32,7 +32,7 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
 
   return <>
     {!statusLightBox && <div className='ContactForm'>
-      <button className='ContactFormButton' onClick={handleModal} tabIndex={2}>Contactez-moi</button>
+      <button className='ContactFormButton' onClick={handleModal} aria-label={'Bouton contactez-moi'} tabIndex={2}>Contactez-moi</button>
     </div>}
     {modal &&
       <section className='ContactFormModal'>

@@ -46,11 +46,11 @@ const SortDropdown = ({ sort }: { sort: any }) => {
     <div>
       <div>
         <div className={`${state ? 'BorderRadiusOpen' : 'BorderRadiusClose'}`}>
-          <button onClick={() => handleSort('Popularité')} tabIndex={9}
+          <button onClick={() => handleSort('Popularité')} tabIndex={9} aria-label={choice}
                   className={`${state ? 'BorderRadiusOpen' : 'BorderRadiusClose'}`}>
             {choice}
           </button>
-          <button className={`${state ? 'rotate ' : 'unrotate'}`} onClick={handleDropdown} tabIndex={8}>
+          <button className={`${state ? 'rotate ' : 'unrotate'}`} onClick={handleDropdown} tabIndex={8} aria-label={'les photos trier par:'}>
             <svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <path d='M14.12 0.453125L8 6.55979L1.88 0.453125L0 2.33312L8 10.3331L16 2.33312L14.12 0.453125Z'
                     fill='white' />
@@ -60,7 +60,7 @@ const SortDropdown = ({ sort }: { sort: any }) => {
       </div>
       <div className={'SortDropdownContent'}>
         {state && selectedChoice!.map((c: string, i: number) => {
-          return <button key={`selectedChoice-${i}`} tabIndex={10 + i} onClick={() => handleSort(c)}>{c}</button>;
+          return <button key={`selectedChoice-${i}`} tabIndex={10 + i} aria-label={c} onClick={() => handleSort(c)}>{c}</button>;
         })}
       </div>
     </div>

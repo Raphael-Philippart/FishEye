@@ -54,7 +54,7 @@ const Photographer = () => {
     <main className='Photographer'>
       <header>
         <div>
-          <Link href={`/`}>
+          <Link href={`/`} ariaLabel={'Logo fishEye, Retour à l\'accueil'}>
             <Logo />
           </Link>
         </div>
