@@ -19,6 +19,10 @@
 
     &:hover {
       cursor: pointer;
+      background: $color-tertiary;
+    }
+    &:focus {
+      background: $color-tertiary;
     }
   }
 
