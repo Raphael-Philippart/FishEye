@@ -16,14 +16,26 @@ const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
   const { mediaLightBox, updateMediaLightBox } = usePhotographerContext();
   const [sortMedia, setSortMedia] = useState(media);
 
+  /**
+   * Function to handle lightbox events triggered by a button click.
+   * @param {React.MouseEvent<HTMLButtonElement, MouseEvent>} e - The button click event.
+   */
   const handleLightBox = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    // Get the eventID from the clicked button's child element
     const eventID = e.currentTarget.children.item(0);
+    // Extract the mediaID from the eventID attribute
     const mediaID = eventID!.getAttribute('id');
 
+    // Update the media in the lightbox
     updateMediaLightBox(mediaID!);
+    // Toggle the lightbox status
     updateStatusLightBox(!statusLightBox);
   };
 
+  /**
+   * Function to handle sorting of media.
+   * @param {string} sort - The sorting criterion.
+   */
   const handleSort = (sort: string) => {
     setSortMedia(Sort(media, sort));
   };

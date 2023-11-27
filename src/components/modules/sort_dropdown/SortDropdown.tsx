@@ -10,10 +10,17 @@ const SortDropdown = ({ sort }: { sort: any }) => {
   const [choice, setChoice] = useState<string>('Titre');
   const [indexChoice, setIndexChoice] = useState(sortChoices.findIndex((e :string) => e === choice));
 
+  /**
+   * Open DropDown
+   */
   const handleDropdown = () => {
     setState(prevState => !prevState);
   };
 
+  /**
+   * Sort handling function.
+   * @param {string} order - The sorting order to apply.
+   */
   const handleSort = (order: string) => {
     const unSelectedChoice = sortChoices.filter((c: string) => c !== order);
     setSelectedChoice(unSelectedChoice);
@@ -21,22 +28,34 @@ const SortDropdown = ({ sort }: { sort: any }) => {
     sort(order);
   };
 
+  /**
+   * Effect to handle sorting and keyboard events.
+   */
   useEffect(() => {
     handleSort(choice);
+    /**
+     * Function to handle keyboard events.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!statusLightBox && state && (e.key === 'Escape')) {
+        // Close the dropdown if not in lightbox mode
         handleDropdown();
       } else if (!statusLightBox && (e.key === '8')) {
+        // Handle key '8' - Move to the previous choice
         setIndexChoice(prevIndex=> prevIndex <= 0 ? sortChoices.length - 1 : prevIndex - 1);
         handleSort(sortChoices[indexChoice]);
       } else if (!statusLightBox && (e.key === '2')) {
+        // Handle key '2' - Move to the next choice
         setIndexChoice(prevIndex=> prevIndex >= (sortChoices.length - 1) ? 0 : prevIndex + 1);
         handleSort(sortChoices[indexChoice]);
       }
     };
 
+    // Add event listener for keydown events
     window.addEventListener('keydown', handleKeyDown);
 
+    // Remove event listener on component unmount
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };

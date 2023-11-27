@@ -28,6 +28,14 @@
   }
 }
 
+/**
+ * Mixin to apply property values at different breakpoints.
+ * @param {string} $property - The CSS property to be applied.
+ * @param {*} $valueSM - The value for the small (sm) breakpoint.
+ * @param {*} $valueMD - The value for the medium (md) breakpoint.
+ * @param {*} $valueLG - The value for the large (lg) breakpoint.
+ * @param {*} $valueXL - The value for the extra-large (xl) breakpoint.
+ */
 @mixin allBreakPoint($property, $valueSM, $valueMD, $valueLG, $valueXL) {
   @include sm {
     #{$property}: $valueSM;
@@ -43,6 +51,12 @@
   }
 }
 
+/**
+ * Mixin to apply font styles at different breakpoints.
+ * @param {*} $fontSize - The base font size.
+ * @param {*} $lineHeight - The base line height.
+ * @param {*} $multiplier - The multiplier for adjusting font size and line height.
+ */
 @mixin fontPhotographer($fontSize, $lineHeight, $multiplier) {
   $unit: px;
 

@@ -8,11 +8,17 @@ const EventLikes = ({ imageLikes, children }: {
   const [statusUserLike, setStatusUserLike] = useState(false);
   const { likes, updateLikes } = usePhotographerContext();
 
+  /**
+   * Function to handle user likes for a media item.
+   */
   const handleLikes = () => {
+    // Check if the user has not liked the media
     if (!statusUserLike) {
+      // Increment the likes count and update the user like status to true
       updateLikes(likes + 1);
       setStatusUserLike(true);
     } else {
+      // Decrement the likes count and update the user like status to false
       updateLikes(likes - 1);
       setStatusUserLike(false);
     }

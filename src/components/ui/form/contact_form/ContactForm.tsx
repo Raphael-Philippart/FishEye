@@ -13,17 +13,28 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
     message: '',
   });
 
+  /**
+   * Function to toggle the modal state.
+   */
   const handleModal = () => {
+    // Toggle the modal state using the previous state
     setModal(preState => !preState);
   };
 
+  /**
+   * Function to handle the submission of a form.
+   * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+   */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Prevent the default form submission behavior
     e.preventDefault();
+    // Log the submission information
     console.log('SUBMIT');
     console.log('FirstName: ', formulaireState.firstname);
     console.log('LastName: ', formulaireState.lastname);
     console.log('E-Mail: ', formulaireState.email);
     console.log('Message: ', formulaireState.message);
+    // Clear the form state after submission
     setFormulaireState({
       firstname: '',
       lastname: '',
@@ -32,20 +43,37 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
     });
   };
 
+  /**
+   * Function to handle input and textarea changes in the form.
+   * @param {ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e - The change event.
+   */
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // Extract the name and value from the event target
     const { name, value } = e.target;
+    // Update the form state using the previous state and the new key-value pair
     setFormulaireState((prev) => ({ ...prev, [name]: value }));
   };
 
+  /**
+   * Effect to handle the 'Escape' key press when the modal is open.
+   */
   useEffect(() => {
+    /**
+     * Function to handle keydown events.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Check if the 'Escape' key is pressed and the modal is open
       if (e.key === 'Escape' && modal) {
+        // Close Modal
         handleModal();
       }
     };
 
+    // Add event listener for keydown events
     window.addEventListener('keydown', handleKeyDown);
 
+    // Remove event listener on component unmount to avoid memory leaks
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };

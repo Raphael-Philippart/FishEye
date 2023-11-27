@@ -11,31 +11,51 @@ const Lightbox = ({ media }: { media: IMedia[] }) => {
   const [current, setCurrent] = useState(media.findIndex(e => String(e.id) === mediaLightBox));
   const [mediaLength, setMediaLength] = useState(media.length);
 
+  /**
+   * Callback function to handle toggling the lightbox status.
+   */
   const handleLightBox = useCallback(() => {
+    // Toggle the lightbox status
     updateStatusLightBox(!statusLightBox);
   }, [statusLightBox]);
 
+  /**
+   * Callback function to slide to the next media item to the right.
+   */
   const slideRight = useCallback(() => {
+    // Update the current index, wrapping around to the first item if at the end
     setCurrent(current === mediaLength - 1 ? 0 : current + 1);
   }, [current, mediaLength]);
 
+  /**
+   * Callback function to slide to the previous media item to the left.
+   */
   const slideLeft = useCallback(() => {
+    // Update the current index, wrapping around to the last item if at the beginning
     setCurrent(current === 0 ? mediaLength - 1 : current - 1);
   }, [current, mediaLength]);
 
+  /**
+   * Effect to handle keyboard events for the lightbox.
+   */
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Close the lightbox if it is open and 'Escape' is pressed
       if (statusLightBox && (e.key === 'Escape')) {
         handleLightBox();
+        // Slide to the left if the lightbox is open and 'ArrowLeft' or '4' is pressed
       } else if (statusLightBox && (e.key === 'ArrowLeft' || e.key === '4')) {
         slideLeft();
+        // Slide to the right if the lightbox is open and 'ArrowRight' or '6' is pressed
       } else if (statusLightBox && (e.key === 'ArrowRight' || e.key === '6')) {
         slideRight();
       }
     };
 
+    // Add event listener for keydown events
     window.addEventListener('keydown', handleKeyDown);
 
+    // Remove event listener on component unmount to avoid memory leaks
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
