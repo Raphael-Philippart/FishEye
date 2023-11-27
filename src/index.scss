@@ -10,3 +10,7 @@
   font-family: 'DMSans';
   src: local('DMSans'), url(./../public/fonts/DMSans-Regular.ttf) format('truetype');
 }
+
+html, body {
+  font-family: 'DMSans', serif;
+}

@@ -24,15 +24,8 @@
     color: $color-primary;
     margin-bottom: 20px;
 
-    @include sm {
-      font-size: 26px;
-      line-height: 26.87px;
-      margin-bottom: 50px;
-    }
-    @include md {
-      font-size: 36px;
-      line-height: 46.87px;
-      margin-bottom: 100px;
+    & > div > h1 {
+      @include fontPhotographer(20, 22, 3.5)
     }
   }
 

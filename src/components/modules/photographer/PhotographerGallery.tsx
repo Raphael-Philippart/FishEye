@@ -9,12 +9,12 @@ import SortDropdown from '../sort_dropdown/SortDropdown';
 import EventLikes from '../event_likes/EventLikes';
 import Sort from '../../../utils/images/Sort';
 import './PhotographerGallery.scss';
+import photographer from '../../../view/Photographer/Photographer';
 
 const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
   const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const { mediaLightBox, updateMediaLightBox } = usePhotographerContext();
   const [sortMedia, setSortMedia] = useState(media);
-  const startTabIndex: number = 12;
 
   const handleLightBox = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const eventID = e.currentTarget.children.item(0);
@@ -36,7 +36,7 @@ const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
           return (
             <div key={`media-${item.id}`}>
               <button className='PhotographerGalleryMedia' onClick={e => handleLightBox(e)}
-                      tabIndex={startTabIndex + index}>
+                      tabIndex={0} aria-label={`${item.title}`}>
                 {item.image && <Image src={`/assets/images/${item.photographerId}/${item.image}`} alt={item.title}
                                       id={`${item.id}`} />}
                 {item.video && <Video src={`/assets/images/${item.photographerId}/${item.video}`}

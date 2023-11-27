@@ -49,11 +49,11 @@
     }
 
     > div:nth-child(3) {
-      font-size: 10px;
+      font-size: 12px;
       line-height: 13.02px;
       color: black;
 
-      @include fontPhotographer(10, 13, 1.5);
+      @include fontPhotographer(12, 13, 1.5);
     }
 
     > div:last-child {

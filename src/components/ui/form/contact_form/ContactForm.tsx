@@ -1,19 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { IPhotographer } from '../../../../utils/types/Types';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { IFormulaireState, IPhotographer } from '../../../../utils/types/Types';
 import { usePhotographerContext } from '../../../../context/PhotographerContext';
 import './ContactForm.scss';
 
 const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
   const { statusLightBox, updateStatusLightBox } = usePhotographerContext();
   const [modal, setModal] = useState(false);
+  const [formulaireState, setFormulaireState] = useState<IFormulaireState>({
+    firstname: '',
+    lastname: '',
+    email: '',
+    message: '',
+  });
 
   const handleModal = () => {
     setModal(preState => !preState);
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('SUBMIT');
+    console.log('FirstName: ', formulaireState.firstname);
+    console.log('LastName: ', formulaireState.lastname);
+    console.log('E-Mail: ', formulaireState.email);
+    console.log('Message: ', formulaireState.message);
+    setFormulaireState({
+      firstname: '',
+      lastname: '',
+      email: '',
+      message: '',
+    });
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormulaireState((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
@@ -32,7 +53,9 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
 
   return <>
     {!statusLightBox && <div className='ContactForm'>
-      <button className='ContactFormButton' onClick={handleModal} aria-label={'Bouton contactez-moi'} tabIndex={2}>Contactez-moi</button>
+      <button className='ContactFormButton' onClick={handleModal} tabIndex={0}
+              aria-label={'Bouton contactez-moi'}>Contactez-moi
+      </button>
     </div>}
     {modal &&
       <section className='ContactFormModal'>
@@ -49,16 +72,20 @@ const ContactForm = ({ photographer }: { photographer: IPhotographer }) => {
         <div className='ContactFormModalContent'>
           <div>{photographer.name}</div>
           <div>
-            <form action='/' method='POST'>
+            <form action='/' method='POST' onSubmit={(e) => handleSubmit(e)}>
               <label htmlFor='firstname'>Prénom</label>
-              <input type='text' id='firstname' name='firstname' tabIndex={3} />
+              <input type='text' id='firstname' name='firstname' tabIndex={0} aria-label={'Prénom'}
+                     onChange={(e) => handleChange(e)} value={formulaireState.firstname} />
               <label htmlFor='lastname'>Nom</label>
-              <input type='text' id='lastname' name='lastname' tabIndex={4} />
+              <input type='text' id='lastname' name='lastname' tabIndex={0} aria-label={'Nom'}
+                     onChange={(e) => handleChange(e)} value={formulaireState.lastname} />
               <label htmlFor='email'>Email</label>
-              <input type='mail' id='email' name='email' tabIndex={5} />
+              <input type='mail' id='email' name='email' tabIndex={0} aria-label={'E-Mail'}
+                     onChange={(e) => handleChange(e)} value={formulaireState.email} />
               <label htmlFor='message'>Votre message</label>
-              <textarea name='message' id='message' tabIndex={6}></textarea>
-              <input type='submit' value='Envoyer' onClick={e => handleSubmit(e)} tabIndex={7} />
+              <textarea name='message' id='message' tabIndex={0} aria-label={'Votre Message'}
+                        onChange={(e) => handleChange(e)} value={formulaireState.message}></textarea>
+              <input type='submit' value='Envoyer' tabIndex={0} />
             </form>
           </div>
         </div>

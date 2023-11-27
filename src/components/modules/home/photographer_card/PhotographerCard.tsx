@@ -5,15 +5,12 @@ import Link from '../../../ui/link/Link';
 import './PhotographerCard.scss';
 
 const PhotographerCard = ({ photographer, tabIndex }: { photographer: IPhotographer, tabIndex: number }) => {
-  const host: string = window.location.host;
-  const protocol: string = window.location.protocol;
-
   return <div className='PhotographerCard'>
     <header>
       <div>
-        <Link href={`photographer/${photographer.id}`} ariaLabel={`Photographe : ${photographer.name}`} tabIndex={tabIndex}>
-          <Image src={`${protocol}//${host}/assets/images/Portraits/${photographer.portrait}`}
-                 alt={photographer.tagline} />
+        <Link href={`photographer/${photographer.id}`} ariaLabel={`Photographe : ${photographer.name}`}>
+          <Image src={`/assets/images/Portraits/${photographer.portrait}`}
+                 alt={photographer.tagline} id={`${photographer.name}`}/>
         </Link>
       </div>
     </header>

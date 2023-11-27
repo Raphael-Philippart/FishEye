@@ -5,7 +5,7 @@ import './Logo.scss';
 
 const Logo = () => {
   return <div className='Logo'>
-    <Image src={logo} alt='Logo FishEye' />
+    <Image src={logo} alt='Logo FishEye' id={'Logo-FishEye'} />
   </div>;
 };
 

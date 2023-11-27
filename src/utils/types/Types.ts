@@ -28,4 +28,8 @@ export type TParams = {
   id: string | undefined;
 };
 
+export interface IFormulaireState {
+  [key: string]: string;
+}
+
 export type TComparatorSortMedia = (a: IMedia, b: IMedia) => number;

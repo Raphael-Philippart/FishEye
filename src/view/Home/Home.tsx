@@ -24,13 +24,13 @@ const Home = () => {
       <Link href='/' ariaLabel={'Logo fishEye, Retour à l\'accueil'}>
         <Logo />
       </Link>
-      <div>Nos photographes</div>
+      <div><h1>Nos photographes</h1></div>
     </header>
     <section className='HomePhotographers'>
       {photographers && photographers!.photographers!.map((photographer: IPhotographer, index: number) => {
         return (
           <PhotographerContainer key={`photographer-${photographer.id}-${index}`}>
-            <PhotographerCard photographer={photographer} tabIndex={(index + 1) + 1} />
+            <PhotographerCard photographer={photographer} tabIndex={0} />
           </PhotographerContainer>
         );
       })}

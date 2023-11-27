@@ -51,7 +51,7 @@ const Photographer = () => {
   }, [photographers]);
 
   return <PhotographerProvider>
-    <main className='Photographer'>
+    <section className='Photographer'>
       <header>
         <div>
           <Link href={`/`} ariaLabel={'Logo fishEye, Retour à l\'accueil'}>
@@ -69,7 +69,7 @@ const Photographer = () => {
           <section>
             <header className='PhotographerHeader'>
               <div>
-                <div className='PhotographerHeaderName'>{photographer.name}</div>
+                <div className='PhotographerHeaderName'><h1>{photographer.name}</h1></div>
                 <div className='PhotographerHeaderCity'>{photographer.city}, {photographer.country}</div>
                 <div className='PhotographerHeaderTagLine'>{photographer.tagline}</div>
               </div>
@@ -78,7 +78,7 @@ const Photographer = () => {
               </div>
               <div className='PhotographerAvatar'>
                 <div>
-                  <Image src={`/assets/images/Portraits/${photographer.portrait}`}
+                  <Image src={`/assets/images/Portraits/${photographer.portrait}`} id={`${photographer.name}`}
                          alt={photographer.tagline} />
                 </div>
               </div>
@@ -90,7 +90,7 @@ const Photographer = () => {
           <LikesPrice media={media} price={photographer.price} />
         </>
       }
-    </main>
+    </section>
   </PhotographerProvider>;
 };
 
