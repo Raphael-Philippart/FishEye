@@ -79,7 +79,7 @@ const Photographer = () => {
               <div className='PhotographerAvatar'>
                 <div>
                   <Image src={`/assets/images/Portraits/${photographer.portrait}`} id={`${photographer.name}`}
-                         alt={photographer.tagline} />
+                         alt={photographer.tagline} ariaLabel={photographer.name} />
                 </div>
               </div>
             </header>

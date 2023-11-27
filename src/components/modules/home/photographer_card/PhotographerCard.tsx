@@ -10,7 +10,7 @@ const PhotographerCard = ({ photographer, tabIndex }: { photographer: IPhotograp
       <div>
         <Link href={`photographer/${photographer.id}`} ariaLabel={`Photographe : ${photographer.name}`}>
           <Image src={`/assets/images/Portraits/${photographer.portrait}`}
-                 alt={photographer.tagline} id={`${photographer.name}`}/>
+                 alt={photographer.tagline} id={`${photographer.name}`} ariaLabel={`${photographer.name}`}/>
         </Link>
       </div>
     </header>

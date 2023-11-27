@@ -50,9 +50,9 @@ const PhotographerGallery = ({ media }: { media: IMedia[] }) => {
               <button className='PhotographerGalleryMedia' onClick={e => handleLightBox(e)}
                       tabIndex={0} aria-label={`${item.title}`}>
                 {item.image && <Image src={`/assets/images/${item.photographerId}/${item.image}`} alt={item.title}
-                                      id={`${item.id}`} />}
+                                      id={`${item.id}`} ariaLabel={`Photo: ${item.title}`} />}
                 {item.video && <Video src={`/assets/images/${item.photographerId}/${item.video}`}
-                                      id={`${item.id}`} />}
+                                      id={`${item.id}`} ariaLabel={`Vidéo: ${item.title}`} />}
               </button>
               <div className='PhotographerGalleryMediaInfo'>
                 <div>{item.title}</div>

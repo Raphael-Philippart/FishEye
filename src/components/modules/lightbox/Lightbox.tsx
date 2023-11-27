@@ -81,9 +81,9 @@ const Lightbox = ({ media }: { media: IMedia[] }) => {
           </button>
           {media[current].image &&
             <Image src={`/assets/images/${media[current].photographerId}/${media[current].image}`}
-                   alt={media[current].title} id={'lightbox'} />}
+                   alt={media[current].title} ariaLabel={`Photo: ${media[current].title}`} id={'lightbox'} />}
           {media[current].video &&
-            <Video src={`/assets/images/${media[current].photographerId}/${media[current].video}`} controls={true} />}
+            <Video src={`/assets/images/${media[current].photographerId}/${media[current].video}`} ariaLabel={`Vidéo: ${media[current].title}`} controls={true} />}
           <button onClick={slideRight} tabIndex={0} aria-label={'Slide a Droite'}>
             <svg width='30' height='48' viewBox='0 0 30 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <path
